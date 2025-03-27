@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f8f9fa;
+            font-family: 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .game-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #score {
+            font-size: 24px;
+            color: #333;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background: #bbada0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .cell {
+            width: 80px;
+            height: 80px;
+            background: rgba(238, 228, 218, 0.35);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #776e65;
+        }
+        .cell[data-value="2"] { background: #eee4da; }
+        .cell[data-value="4"] { background: #ede0c8; }
+        .cell[data-value="8"] { background: #f2b179; color: #f9f6f2; }
+        .cell[data-value="16"] { background: #f59563; color: #f9f6f2; }
+        .cell[data-value="32"] { background: #f67c5f; color: #f9f6f2; }
+        .cell[data-value="64"] { background: #f65e3b; color: #f9f6f2; }
+        .cell[data-value="128"] { background: #edcf72; color: #f9f6f2; font-size: 20px; }
+        .cell[data-value="256"] { background: #edcc61; color: #f9f6f2; font-size: 20px; }
+        .cell[data-value="512"] { background: #edc850; color: #f9f6f2; font-size: 20px; }
+        .cell[data-value="1024"] { background: #edc53f; color: #f9f6f2; font-size: 18px; }
+        .cell[data-value="2048"] { background: #edc22e; color: #f9f6f2; font-size: 18px; }
+        #startBtn {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background-color: #FF5A5F;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        #startBtn:hover {
+            background-color: #FF4448;
+        }
+        #gameOver {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="info">
+            <div id="score">分数: 0</div>
+        </div>
+        <div class="grid" id="grid"></div>
+        <button id="startBtn">开始游戏</button>
+    </div>
+    <div id="gameOver">
+        <h2>游戏结束</h2>
+        <div>最终得分: <span id="finalScore">0</span></div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

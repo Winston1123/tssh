@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小游戏集合</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .title {
+            color: #FF5A5F;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        .game-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+        .game-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .game-desc {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .play-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: #FF5A5F;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+        .play-btn:hover {
+            background-color: #FF4448;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">小游戏集合</h1>
+        <div class="game-grid">
+            <div class="game-card">
+                <h2 class="game-title">2048</h2>
+                <p class="game-desc">经典的2048数字游戏，通过方向键合并相同的数字，努力达到2048！</p>
+                <a href="2048/index.html" class="play-btn">开始游戏</a>
+            </div>
+            <div class="game-card">
+                <h2 class="game-title">贪吃蛇</h2>
+                <p class="game-desc">经典的贪吃蛇游戏，通过方向键控制蛇的移动，吃到食物可以增长身体。注意不要撞到墙壁或自己的身体！</p>
+                <a href="snake/index.html" class="play-btn">开始游戏</a>
+            </div>
+            <div class="game-card">
+                <h2 class="game-title">俄罗斯方块</h2>
+                <p class="game-desc">经典的俄罗斯方块游戏，使用方向键控制方块的移动和旋转，消除完整的行来得分！</p>
+                <a href="tetris/index.html" class="play-btn">开始游戏</a>
+            </div>
+            <div class="game-card">
+                <h2 class="game-title">扫雷</h2>
+                <p class="game-desc">经典的扫雷游戏，考验你的逻辑思维能力。左键点击揭示方块，右键标记地雷，小心不要踩到地雷！</p>
+                <a href="minesweeper/index.html" class="play-btn">开始游戏</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
