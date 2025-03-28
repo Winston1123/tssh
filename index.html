@@ -4,57 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Winston的个人空间</title>
-    <!-- 修改文件路径，加入 /tssh/ -->
-    <link rel="stylesheet" href="/tssh/styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="./js/weather.js" defer></script>
+    <script src="./js/theme.js" defer></script>
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .profile-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .profile {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .profile-name {
+            font-size: 2em;
+            margin: 10px 0;
+            color: #333;
+        }
+        .profile-bio {
+            color: #666;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+        }
+        .contact-card i {
+            font-size: 1.2em;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .social-links a {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #333, #444);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .social-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        .tech-stack {
+            margin-top: 40px;
+            text-align: left;
+        }
+        .tech-stack h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .tech-item {
+            background: #f5f5f5;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: #666;
+        }
+        .projects {
+            margin-top: 40px;
+        }
+        .projects h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .project-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .project-card h3 {
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+        .project-card p {
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .games-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .games-link:hover {
+            background: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-card {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            .social-links {
+                flex-wrap: wrap;
+            }
+            .social-links a {
+                min-width: 140px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- 左侧博客信息区域 -->
-        <div class="blog-section">
+        <div class="profile-section">
             <div class="profile">
                 <img src="https://robohash.org/winston" alt="头像" class="profile-avatar">
                 <h1 class="profile-name">Winston</h1>
+                <div class="theme-switch">
+                    <button id="light-theme" class="theme-btn" data-theme="light">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <button id="dark-theme" class="theme-btn" data-theme="dark">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="auto-switch">
+                        <label class="switch">
+                            <input type="checkbox" id="auto-theme">
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="auto-label">自动</span>
+                    </div>
+                </div>
+                <div class="weather-widget"></div>
                 <p class="profile-bio">资深移动开发工程师，专注于iOS开发（Swift/Objective-C）和Flutter跨平台开发。擅长iOS原生框架、SwiftUI、Flutter Widget开发，具备丰富的应用架构和性能优化经验。</p>
+                <div class="contact-info">
+                    <a href="tel:13823501974" class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <span>13823501974</span>
+                    </a>
+                    <a href="mailto:zhangwentong1123@icloud.com" class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <span>zhangwentong1123@icloud.com</span>
+                    </a>
+                </div>
                 <div class="social-links">
                     <a href="https://winston1123.github.io" target="_blank">技术博客</a>
                     <a href="https://github.com/winston1123" target="_blank">GitHub</a>
+                    <a href="/tssh/pages/games.html">休闲游戏</a>
                 </div>
             </div>
-            <!-- 天气信息 -->
-            <div class="weather-widget">
-                <div class="weather-header">
-                    <div class="weather-temp">加载中...</div>
-                </div>
-                <div class="weather-desc">
-                    <p>正在获取天气信息...</p>
-                </div>
-            </div>
-        </div>
 
-        <!-- 右侧游戏列表 -->
-        <div class="games-section">
-            <h2 class="section-title">休闲小游戏</h2>
-            <div class="game-grid">
-                <div class="game-card" onclick="window.location.href='/tssh/2048/index.html'">
-                    <h3 class="game-title">2048</h3>
-                    <p class="game-desc">经典数字益智游戏</p>
+            <div class="tech-stack">
+                <h2>技术栈</h2>
+                <div class="tech-list">
+                    <span class="tech-item">Swift</span>
+                    <span class="tech-item">Objective-C</span>
+                    <span class="tech-item">Flutter</span>
+                    <span class="tech-item">SwiftUI</span>
+                    <span class="tech-item">UIKit</span>
+                    <span class="tech-item">Dart</span>
+                    <span class="tech-item">Git</span>
+                    <span class="tech-item">CI/CD</span>
                 </div>
-                <div class="game-card" onclick="window.location.href='/tssh/snake/index.html'">
-                    <h3 class="game-title">贪吃蛇</h3>
-                    <p class="game-desc">永不过时的休闲游戏</p>
-                </div>
-                <div class="game-card" onclick="window.location.href='/tssh/tetris/index.html'">
-                    <h3 class="game-title">俄罗斯方块</h3>
-                    <p class="game-desc">考验反应力的方块游戏</p>
-                </div>
-                <div class="game-card" onclick="window.location.href='/tssh/minesweeper/index.html'">
-                    <h3 class="game-title">扫雷</h3>
-                    <p class="game-desc">经典的逻辑推理游戏</p>
+
+                <div class="projects">
+                    <h2>项目经验</h2>
+                    <div class="project-card">
+                        <h3>跨平台电商应用</h3>
+                        <p>使用Flutter开发的跨平台电商应用，支持iOS和Android平台。实现了商品浏览、购物车、订单管理等核心功能，并优化了应用性能和用户体验。</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>iOS原生社交应用</h3>
+                        <p>使用Swift和SwiftUI开发的iOS原生社交应用，实现了用户注册、登录、个人主页、消息通知等功能。采用MVVM架构，并集成了实时聊天功能。</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>企业级工作流应用</h3>
+                        <p>基于Flutter开发的企业级工作流应用，支持任务管理、文档协作、项目追踪等功能。使用Clean Architecture确保代码的可维护性和可测试性。</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- 修改文件路径，加入 /tssh/ -->
-    <script src="/tssh/js/weather.js"></script>
 </body>
 </html>
