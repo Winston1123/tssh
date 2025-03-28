@@ -1,8 +1,7 @@
 {
   "name": "tssh",
   "version": "1.0.0",
-  "homepage": "https://winston1123.github.io",
-  "license": "MIT",
+  "homepage": "https://winston1123.github.io/tssh",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

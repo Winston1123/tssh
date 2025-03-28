@@ -1,5 +1,5 @@
 export default {
-  base: '/',
+  base: '/tssh/',
   build: {
     outDir: 'dist'
   }

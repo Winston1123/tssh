@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        gameResult.textContent = isWin ? '恭喜你赢了！' : '游戏结束！';
         gameOverDiv.style.display = 'block';
+        gameResult.textContent = isWin ? '恭喜你赢了！' : '游戏结束！';
         startBtn.textContent = '重新开始';
     }
 
